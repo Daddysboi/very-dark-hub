@@ -39,9 +39,9 @@ const syncStates = async () => {
     const dbStates = await State.find({});
     const jsonStates = states;
 
-    // Map country alpha2 to country _id
+    // Map country alpha3 to country _id
     const dbCountries = await Country.find({});
-    const countryMap = new Map(dbCountries.map(c => [c.alpha2, c._id]));
+    const countryMap = new Map(dbCountries.map(c => [c.alpha3, c._id]));
 
     const dbStateMap = new Map(dbStates.map(s => [s.code, s]));
     const jsonStateMap = new Map(jsonStates.map(s => [s.code, s]));
@@ -50,7 +50,9 @@ const syncStates = async () => {
 
     const toCreate = jsonStates
         .filter(s => !dbStateMap.has(s.code))
-        .map(s => ({ ...s, country: countryMap.get(s.name) }));
+        .map(s => ({...s, country: countryMap.get(s.alpha3)}))
+        // remove any state entries where the country could not be resolved
+        .filter(s => !!s.country);
 
 
     if (toDelete.length > 0) {
@@ -69,10 +71,15 @@ const syncStates = async () => {
     for (const dbState of dbStates) {
         const jsonState = jsonStateMap.get(dbState.code);
         if (jsonState) {
-            const countryId = countryMap.get(jsonState.country);
+            const countryId = countryMap.get(jsonState.alpha3);
             if (countryId) {
-                if (dbState.name !== jsonState.name || !dbState.country.equals(countryId)) {
-                    toUpdate.push(State.updateOne({ _id: dbState._id }, { name: jsonState.name, country: countryId }));
+                const countryIdStr = countryId.toString();
+                const dbCountryIdStr = dbState.country
+                    ? ((dbState.country as any)._id ? (dbState.country as any)._id.toString() : (dbState.country as any).toString())
+                    : undefined;
+
+                if (dbState.name !== jsonState.name || dbCountryIdStr !== countryIdStr) {
+                    toUpdate.push(State.updateOne({_id: dbState._id}, {name: jsonState.name, country: countryId}));
                 }
             }
         }

@@ -80,7 +80,7 @@ const validateToken = catchAsyncError(async (req: { query: { token?: string } },
     });
 });
 
-export default {
+export const authController = {
     signUp,
     login,
     authenticatedUser,

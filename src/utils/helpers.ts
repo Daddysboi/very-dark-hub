@@ -1,9 +1,9 @@
-import { PW_REGEX } from '../validators/passwordValidator';
+import {PW_REGEX} from '../validators/passwordValidator';
 import httpStatus from 'http-status';
 import AppError from './AppError';
-import { UserRequest } from '../validators/validateAccessControl';
+import {UserRequest} from '../validators/validateAccessControl';
 import moment from 'moment';
-import { CHARS } from './constants';
+import {CHARS} from './constants';
 
 /**
  * function to generate otp and expiry time
@@ -11,35 +11,35 @@ import { CHARS } from './constants';
  * @returns expiryTime [string]
  */
 const generateOtp = async () => {
-  const min = 90000;
-  const max = 10000;
+    const min = 90000;
+    const max = 10000;
 
-  const otp = Math.floor(Math.random() * min + max);
-  const currentTime = new Date();
-  const newTime = new Date(currentTime.getTime() + 15 * 60000); // 20 minutes in milliseconds
+    const otp = Math.floor(Math.random() * min + max);
+    const currentTime = new Date();
+    const newTime = new Date(currentTime.getTime() + 15 * 60000); // 20 minutes in milliseconds
 
-  return {
-    otp,
-    newTime,
-  };
+    return {
+        otp,
+        newTime,
+    };
 };
 
 const generateRandomPassword = (length = 8) => {
-  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@$!%*?&';
-  let password;
-  do {
-    password = Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-  } while (!PW_REGEX.test(password));
-  return password;
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@$!%*?&';
+    let password;
+    do {
+        password = Array.from({length}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+    } while (!PW_REGEX.test(password));
+    return password;
 };
 
 export const generatePrefixedCode = (prefix: string): string => {
-  const random = Math.floor(100000 + Math.random() * 900000);
-  return `${prefix}-${random}`;
+    const random = Math.floor(100000 + Math.random() * 900000);
+    return `${prefix}-${random}`;
 };
 
 export const generateRandomNumber = (length: number): string => {
-  return String(Math.floor(Math.random() * Math.pow(10, length))).padStart(length, '0');
+    return String(Math.floor(Math.random() * Math.pow(10, length))).padStart(length, '0');
 };
 
 /**
@@ -48,21 +48,21 @@ export const generateRandomNumber = (length: number): string => {
  * @returns A random alphanumeric string
  */
 const generateRandomString = (length = 8): string => {
-  return Array.from({ length }, () => CHARS[Math.floor(Math.random() * CHARS.length)]).join('');
+    return Array.from({length}, () => CHARS[Math.floor(Math.random() * CHARS.length)]).join('');
 };
 
 const generateIdentifier = async (model: any, prefix = 'TR-', length = 3): Promise<string> => {
-  let identifier = '';
-  let isUnique = false;
+    let identifier = '';
+    let isUnique = false;
 
-  while (!isUnique) {
-    const randomNumber = generateRandomNumber(length);
-    identifier = `${prefix}${randomNumber}`;
-    const existingDoc = await model.findOne({ identifier });
-    if (!existingDoc) isUnique = true;
-  }
+    while (!isUnique) {
+        const randomNumber = generateRandomNumber(length);
+        identifier = `${prefix}${randomNumber}`;
+        const existingDoc = await model.findOne({identifier});
+        if (!existingDoc) isUnique = true;
+    }
 
-  return identifier;
+    return identifier;
 };
 
 /**
@@ -72,38 +72,50 @@ const generateIdentifier = async (model: any, prefix = 'TR-', length = 3): Promi
  * @throws AppError if the input is an invalid JSON string.
  */
 const safeJsonParse = <T = any>(input: string | object | any[]): T => {
-  if (typeof input === 'string') {
-    try {
-      return JSON.parse(input) as T;
-    } catch (error) {
-      throw new AppError(httpStatus.BAD_REQUEST, 'Invalid JSON format');
+    if (typeof input === 'string') {
+        try {
+            return JSON.parse(input) as T;
+        } catch (error) {
+            throw new AppError(httpStatus.BAD_REQUEST, 'Invalid JSON format');
+        }
     }
-  }
-  return input as T;
+    return input as T;
 };
 
 const getClientIp = (req: UserRequest): string | undefined => {
-  const forwardedFor = req.headers['x-forwarded-for'];
+    const forwardedFor = req.headers['x-forwarded-for'];
 
-  if (typeof forwardedFor === 'string') {
-    return forwardedFor.split(',')[0].trim();
-  }
+    if (typeof forwardedFor === 'string') {
+        return forwardedFor.split(',')[0].trim();
+    }
 
-  if (Array.isArray(forwardedFor)) {
-    return forwardedFor[0]?.trim();
-  }
+    if (Array.isArray(forwardedFor)) {
+        return forwardedFor[0]?.trim();
+    }
 
-  return req.ip;
+    return req.ip;
 };
 
 const formatDate = (date: Date) => {
-  return moment(date).format('Do MMM YYYY, h:mm a');
+    return moment(date).format('Do MMM YYYY, h:mm a');
 };
 
 const calculateExpiresIn = (expiresAt: Date): number => {
-  const now = Math.floor(Date.now() / 1000);
-  const expires = Math.floor(expiresAt.getTime() / 1000);
-  return Math.max(0, expires - now);
+    const now = Math.floor(Date.now() / 1000);
+    const expires = Math.floor(expiresAt.getTime() / 1000);
+    return Math.max(0, expires - now);
 };
 
-export { generateOtp, generateRandomPassword, generateRandomString, generateIdentifier, safeJsonParse, getClientIp, calculateExpiresIn, formatDate };
+
+export {
+    generateOtp,
+    generateRandomPassword,
+    generateRandomString,
+    generateIdentifier,
+    safeJsonParse,
+    getClientIp,
+    calculateExpiresIn,
+    formatDate
+};
+
+

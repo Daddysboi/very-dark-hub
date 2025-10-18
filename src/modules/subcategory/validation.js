@@ -1,17 +1,17 @@
-import Joi from "joi";
+import { z } from 'zod';
 
-const addSubCategoryValidation = Joi.object({
-  name: Joi.string().required().min(2).trim(),
-  category: Joi.string().hex().length(24).required(),
+const addSubCategoryValidation = z.object({
+  name: z.string().min(2).trim(),
+  category: z.string().length(24).regex(/^[a-fA-F0-9]+$/, 'Invalid ObjectId'),
 });
 
-const updateSubCategoryValidation = Joi.object({
-  id: Joi.string().hex().length(24).required(),
-  name: Joi.string().required().min(2).trim(),
+const updateSubCategoryValidation = z.object({
+  id: z.string().length(24).regex(/^[a-fA-F0-9]+$/, 'Invalid ObjectId'),
+  name: z.string().min(2).trim(),
 });
 
-const deleteSubCategoryValidation = Joi.object({
-  id: Joi.string().hex().length(24).required(),
+const deleteSubCategoryValidation = z.object({
+  id: z.string().length(24).regex(/^[a-fA-F0-9]+$/, 'Invalid ObjectId'),
 });
 
 export {

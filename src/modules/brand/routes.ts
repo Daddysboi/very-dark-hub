@@ -12,7 +12,7 @@ const brandRouter = express.Router();
 brandRouter
     .route("/")
     .post(
-        validate(addBrandValidation),
+        validate({body: addBrandValidation}),
         brand.addBrand
     )
     .get(brand.getAllBrands);
@@ -20,11 +20,11 @@ brandRouter
 brandRouter
     .route("/:id")
     .put(
-        validate(updateBrandValidation),
+        validate({body: updateBrandValidation}),
         brand.updateBrand
     )
     .delete(
-        validate(deleteBrandValidation),
+        validate({params: deleteBrandValidation}),
         brand.deleteBrand
     );
 

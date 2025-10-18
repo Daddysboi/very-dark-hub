@@ -12,7 +12,7 @@ const subCategoryRouter = express.Router({mergeParams: true});
 subCategoryRouter
     .route("/")
     .post(
-        validate(addSubCategoryValidation),
+        validate({body: addSubCategoryValidation}),
         subCategory.addSubCategory
     )
     .get(subCategory.getAllSubCategories);
@@ -20,11 +20,11 @@ subCategoryRouter
 subCategoryRouter
     .route("/:id")
     .put(
-        validate(updateSubCategoryValidation),
+        validate({body: updateSubCategoryValidation}),
         subCategory.updateSubCategory
     )
     .delete(
-        validate(deleteSubCategoryValidation),
+        validate({params: deleteSubCategoryValidation}),
         subCategory.deleteSubCategory
     );
 

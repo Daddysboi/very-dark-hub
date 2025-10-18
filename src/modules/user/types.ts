@@ -18,6 +18,7 @@ export interface IUser extends Document {
     updatedAt?: Date;
     lastSensitiveActionAt?: Date;
     address?: IAddress[];
+    isVerified?: boolean;
 }
 
 export interface BaseQuery {

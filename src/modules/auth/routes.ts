@@ -3,9 +3,9 @@ import validate from "../../validators/validate";
 import {commonValidation} from "../../validators/commonValidation";
 import {validation} from "./validation";
 import {authenticateJWT} from "../../middlewares/jwt";
-import authController from './controller';
 import {grantAccess} from "../../validators/validateAccessControl";
 import {Resources} from "../../config/roles";
+import { authController } from "./controller";
 
 
 const authRouter = express.Router();

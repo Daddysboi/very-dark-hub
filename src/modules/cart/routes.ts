@@ -1,6 +1,5 @@
 import express from "express";
 
-import {addProductToCartValidation, removeProductFromCart} from "./validation.js";
 import * as cart from "./controller.js"
 
 const cartRouter = express.Router();

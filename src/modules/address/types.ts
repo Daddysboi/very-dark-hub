@@ -1,3 +1,5 @@
+import {Types} from "mongoose";
+
 export interface IAddress {
     user: Types.ObjectId,
     street: string,
