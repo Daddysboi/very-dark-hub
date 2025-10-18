@@ -1,0 +1,224 @@
+[
+  {
+    "id": "37",
+    "name": "Nasarawa",
+    "code": "NS",
+    "alpha3": "nga"
+  },
+  {
+    "id": "36",
+    "name": "Niger",
+    "code": "NW",
+    "alpha3": "nga"
+  },
+  {
+    "id": "35",
+    "name": "Zamfara",
+    "code": "ZF",
+    "alpha3": "nga"
+  },
+  {
+    "id": "34",
+    "name": "Yobe",
+    "code": "YB",
+    "alpha3": "nga"
+  },
+  {
+    "id": "33",
+    "name": "Taraba",
+    "code": "TR",
+    "alpha3": "nga"
+  },
+  {
+    "id": "32",
+    "name": "Sokoto",
+    "code": "SO",
+    "alpha3": "nga"
+  },
+  {
+    "id": "31",
+    "name": "Rivers",
+    "code": "RV",
+    "alpha3": "nga"
+  },
+  {
+    "id": "30",
+    "name": "Plateau",
+    "code": "PL",
+    "alpha3": "nga"
+  },
+  {
+    "id": "29",
+    "name": "Oyo",
+    "code": "OY",
+    "alpha3": "nga"
+  },
+  {
+    "id": "28",
+    "name": "Osun",
+    "code": "OS",
+    "alpha3": "nga"
+  },
+  {
+    "id": "27",
+    "name": "Ondo",
+    "code": "ON",
+    "alpha3": "nga"
+  },
+  {
+    "id": "26",
+    "name": "Ogun",
+    "code": "OG",
+    "alpha3": "nga"
+  },
+  {
+    "id": "25",
+    "name": "Kwara",
+    "code": "KW",
+    "alpha3": "nga"
+  },
+  {
+    "id": "24",
+    "name": "Kogi",
+    "code": "KG",
+    "alpha3": "nga"
+  },
+  {
+    "id": "23",
+    "name": "Katsina",
+    "code": "KT",
+    "alpha3": "nga"
+  },
+  {
+    "id": "22",
+    "name": "Kano",
+    "code": "KN",
+    "alpha3": "nga"
+  },
+  {
+    "id": "21",
+    "name": "Kaduna",
+    "code": "KD",
+    "alpha3": "nga"
+  },
+  {
+    "id": "20",
+    "name": "Jigawa",
+    "code": "JG",
+    "alpha3": "nga"
+  },
+  {
+    "id": "19",
+    "name": "Imo",
+    "code": "IM",
+    "alpha3": "nga"
+  },
+  {
+    "id": "18",
+    "name": "Gombe",
+    "code": "GM",
+    "alpha3": "nga"
+  },
+  {
+    "id": "17",
+    "name": "Enugu",
+    "code": "EN",
+    "alpha3": "nga"
+  },
+  {
+    "id": "16",
+    "name": "Ekiti",
+    "code": "EK",
+    "alpha3": "nga"
+  },
+  {
+    "id": "15",
+    "name": "Edo",
+    "code": "ED",
+    "alpha3": "nga"
+  },
+  {
+    "id": "14",
+    "name": "Ebonyi",
+    "code": "EB",
+    "alpha3": "nga"
+  },
+  {
+    "id": "13",
+    "name": "Delta",
+    "code": "DT",
+    "alpha3": "nga"
+  },
+  {
+    "id": "12",
+    "name": "Cross River",
+    "code": "CR",
+    "alpha3": "nga"
+  },
+  {
+    "id": "11",
+    "name": "Borno",
+    "code": "BO",
+    "alpha3": "nga"
+  },
+  {
+    "id": "10",
+    "name": "Benue",
+    "code": "BN",
+    "alpha3": "nga"
+  },
+  {
+    "id": "9",
+    "name": "Bayelsa",
+    "code": "BY",
+    "alpha3": "nga"
+  },
+  {
+    "id": "8",
+    "name": "Bauchi",
+    "code": "BA",
+    "alpha3": "nga"
+  },
+  {
+    "id": "7",
+    "name": "Anambra",
+    "code": "AN",
+    "alpha3": "nga"
+  },
+  {
+    "id": "6",
+    "name": "Akwa Ibom",
+    "code": "AK",
+    "alpha3": "nga"
+  },
+  {
+    "id": "5",
+    "name": "Abia",
+    "code": "AB",
+    "alpha3": "nga"
+  },
+  {
+    "id": "4",
+    "name": "Kebbi",
+    "code": "KB",
+    "alpha3": "nga"
+  },
+  {
+    "id": "3",
+    "name": "Adamawa",
+    "code": "AD",
+    "alpha3": "nga"
+  },
+  {
+    "id": "2",
+    "name": "FCT Abuja",
+    "code": "FC",
+    "alpha3": "nga"
+  },
+  {
+    "id": "1",
+    "name": "Lagos",
+    "code": "LA",
+    "alpha3": "nga"
+  }
+]
