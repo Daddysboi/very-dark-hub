@@ -1,3 +1,7 @@
 /node_modules
-/.env
+.env
 /demo.json
+
+.idea/
+.vscode/
+dist/
