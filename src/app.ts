@@ -41,5 +41,4 @@ const start = async () => {
     serverConfig(app)
 };
 
-start().then(() => {
-});
+start();
